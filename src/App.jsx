@@ -1,98 +1,53 @@
 import React from "react";
+import photo from "./assets/Krash.jpg";
 
 const ExperienceItem = ({ title, period, description }) => (
-  <div style={{ marginBottom: "1rem" }}>
-    <h3 style={{ color: "#1f2937", fontWeight: "600", textAlign: "center" }}>
-      {title}
-    </h3>
-    <p style={{ fontSize: "0.875rem", color: "#6b7280", textAlign: "center" }}>
-      {period}
-    </p>
-    <p style={{ fontSize: "0.875rem", color: "#4b5563", textAlign: "center" }}>
-      {description}
-    </p>
+  <div className="experience-item">
+    <h3 className="experience-title">{title}</h3>
+    <p className="experience-period">{period}</p>
+    <p className="experience-description">{description}</p>
+  </div>
+);
+
+const ProgressBar = ({ skill, level }) => (
+  <div className="progress-bar">
+    <p className="progress-skill">{skill}</p>
+    <div className="progress-container">
+      <div className="progress-fill" style={{ width: `${level}%` }}></div>
+    </div>
   </div>
 );
 
 const Resume = () => {
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#f3f4f6",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "768px",
-          width: "100%",
-          backgroundColor: "#ffffff",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          borderRadius: "1rem",
-          padding: "2rem",
-          textAlign: "center",
-        }}
-      >
-        <header>
-          <h1
-            style={{
-              fontSize: "1.875rem",
-              fontWeight: "700",
-              color: "#1f2937",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Мырза Доктурбеков
-          </h1>
-          <p style={{ color: "#6b7280", marginBottom: "1rem" }}>
+    <main className="resume-main">
+      <div className="resume-container">
+        <img className="photo" src={photo} alt="" />
+        <header className="resume-header">
+          <h1 className="resume-title">Мырза Доктурбеков</h1>
+          <p className="resume-subtitle">
             Junior Frontend Developer — опыт учебы 1 год
           </p>
         </header>
-        <section>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: "#374151",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Контакты
-          </h2>
-          <ul
-            style={{
-              color: "#4b5563",
-              listStyle: "none",
-              padding: 0,
-              marginBottom: "1rem",
-            }}
-          >
+        <section className="resume-section">
+          <h2 className="section-title">Контакты</h2>
+          <ul className="contact-list">
             <li>
               Email:{" "}
-              <a href="http://mailto:mmg9999999@gmail.com">
-                mailto:mmg9999999@gmail.com
-              </a>
+              <a href="mailto:mmg9999999@gmail.com">mmg9999999@gmail.com</a>
             </li>
             <li>Телефон: +996 999 003 992</li>
-            <li>GitHub: github.com/mmg9999999</li>
+            <li>
+              GitHub:{" "}
+              <a href="https://github.com/mmg9999999">github.com/mmg9999999</a>
+            </li>
           </ul>
         </section>
-        <section>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: "#374151",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Опыт работы
-          </h2>
+        <section className="resume-section">
+          <h2 className="section-title">Опыт работы</h2>
           <div>
             <ExperienceItem
+              title="Frontend Developer"
               period="2024 — наст. время"
               description="Разработка масштабируемых SPA, архитектура фронтенда, менторство команды из 10 разработчиков."
             />
@@ -103,85 +58,23 @@ const Resume = () => {
             />
           </div>
         </section>
-        <section>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: "#374151",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Образование
-          </h2>
-          <p style={{ color: "#4b5563", marginBottom: "1rem" }}>
+        <section className="resume-section">
+          <h2 className="section-title">Образование</h2>
+          <p className="education">
             PLIT99 - лицей информационных технологий, 2024-2026
           </p>
         </section>
-        <section>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: "#374151",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Навыки
-          </h2>
-          <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "0.5rem",
-              color: "#4b5563",
-              listStyle: "none",
-              padding: 0,
-              marginBottom: "1rem",
-            }}
-          >
-            <li>React</li>
-            <li>html</li>
-            <li>css</li>
-            <li>Tailwind CSS</li>
-            <li>js</li>
-            <li>Vite</li>
-          </ul>
+        <section className="resume-section">
+          <h2 className="section-title">Навыки</h2>
+          <div>
+            <ProgressBar skill="React" level={20} />
+            <ProgressBar skill="HTML" level={200} />
+            <ProgressBar skill="CSS" level={200} />
+            <ProgressBar skill="Tailwind CSS" level={50} />
+            <ProgressBar skill="JavaScript" level={80} />
+            <ProgressBar skill="Vite" level={20} />
+          </div>
         </section>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            marginTop: "1.5rem",
-          }}
-        >
-          <button
-            style={{
-              backgroundColor: "#3b82f6",
-              color: "#ffffff",
-              padding: "0.5rem 1rem",
-              borderRadius: "0.375rem",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Кнопка 1
-          </button>
-          <button
-            style={{
-              backgroundColor: "#6b7280",
-              color: "#ffffff",
-              padding: "0.5rem 1rem",
-              borderRadius: "0.375rem",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Кнопка 2
-          </button>
-        </div>
       </div>
     </main>
   );
